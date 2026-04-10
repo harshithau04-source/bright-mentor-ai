@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Question, RoundType } from '@/data/mockQuestions';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 interface TestResult {
   round: RoundType;
@@ -27,17 +29,39 @@ interface TestContextType {
 const TestContext = createContext<TestContextType | null>(null);
 
 export function TestProvider({ children }: { children: ReactNode }) {
+  const { user, profile, refreshProfile } = useAuth();
   const [lastResult, setLastResult] = useState<TestResult | null>(null);
   const [progress, setProgress] = useState<UserProgress>({
     completedRounds: [],
     scores: {},
   });
 
-  const updateProgress = (round: string, score: number) => {
-    setProgress(prev => ({
-      completedRounds: [...prev.completedRounds, round],
-      scores: { ...prev.scores, [round]: score },
-    }));
+  // Sync progress from profile
+  useEffect(() => {
+    if (profile) {
+      setProgress({
+        completedRounds: profile.completed_rounds,
+        scores: profile.scores,
+      });
+    }
+  }, [profile]);
+
+  const updateProgress = async (round: string, score: number) => {
+    const newCompleted = [...progress.completedRounds, round];
+    const newScores = { ...progress.scores, [round]: score };
+
+    setProgress({ completedRounds: newCompleted, scores: newScores });
+
+    if (user) {
+      await supabase
+        .from('profiles')
+        .update({
+          completed_rounds: newCompleted,
+          scores: newScores,
+        })
+        .eq('user_id', user.id);
+      refreshProfile();
+    }
   };
 
   const isRoundUnlocked = (round: RoundType, level: number): boolean => {
