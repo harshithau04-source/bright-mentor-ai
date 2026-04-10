@@ -1,23 +1,38 @@
 import { motion } from 'framer-motion';
-import { Trophy, Target, Zap } from 'lucide-react';
+import { Trophy, Target, Zap, LogOut, User } from 'lucide-react';
 import RoundCard from '@/components/RoundCard';
 import { useTest } from '@/context/TestContext';
+import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
 
 export default function Dashboard() {
   const { progress } = useTest();
+  const { profile, signOut } = useAuth();
   const totalCompleted = progress.completedRounds.length;
   const totalScore = Object.values(progress.scores).reduce((a, b) => a + b, 0);
 
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border/50 gradient-hero">
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-6 py-8 flex items-start justify-between">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="text-3xl font-display font-bold text-gradient-primary mb-2">
               AI Interview Prep
             </h1>
-            <p className="text-muted-foreground">Master your interviews with adaptive practice rounds</p>
+            <p className="text-muted-foreground">
+              Welcome back, <span className="text-foreground font-medium">{profile?.display_name || 'User'}</span>
+            </p>
           </motion.div>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/50">
+              <User className="w-4 h-4 text-muted-foreground" />
+              <span className="text-sm text-foreground">{profile?.display_name}</span>
+            </div>
+            <Button variant="outline" size="sm" onClick={signOut} className="gap-2">
+              <LogOut className="w-4 h-4" /> Sign Out
+            </Button>
+          </div>
         </div>
       </header>
 
