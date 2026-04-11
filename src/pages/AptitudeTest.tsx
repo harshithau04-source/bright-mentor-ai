@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Send } from 'lucide-react';
 import Timer from '@/components/Timer';
 import QuestionNav from '@/components/QuestionNav';
+import WebcamProctor from '@/components/WebcamProctor';
 import { getQuestions, RoundType } from '@/data/mockQuestions';
 import { useTest } from '@/context/TestContext';
 import { Button } from '@/components/ui/button';
