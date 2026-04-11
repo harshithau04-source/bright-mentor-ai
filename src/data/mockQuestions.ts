@@ -16,241 +16,38 @@ export const aptitudeQuestions: Question[] = [
     explanation: "Speed = 60 × 5/18 = 50/3 m/s. Length = Speed × Time = 50/3 × 9 = 150 m.",
     topic: "Speed & Distance"
   },
-  {
-    id: 2,
-    question: "If the cost price of 12 items equals the selling price of 10 items, what is the profit percentage?",
-    options: ["10%", "15%", "20%", "25%"],
-    answer: "20%",
-    explanation: "Let CP of each item = 1. Total CP = 12. SP of 10 items = 12. SP per item = 1.2. Profit = 20%.",
-    topic: "Profit & Loss"
-  },
-  {
-    id: 3,
-    question: "What is the next number in the series: 2, 6, 12, 20, 30, ?",
-    options: ["40", "42", "44", "46"],
-    answer: "42",
-    explanation: "Differences: 4, 6, 8, 10, 12. Next number = 30 + 12 = 42.",
-    topic: "Number Series"
-  },
-  {
-    id: 4,
-    question: "A can do a work in 15 days and B in 20 days. If they work together for 4 days, what fraction of work is left?",
-    options: ["7/15", "8/15", "1/3", "11/15"],
-    answer: "8/15",
-    explanation: "Combined work per day = 1/15 + 1/20 = 7/60. Work in 4 days = 28/60 = 7/15. Left = 1 - 7/15 = 8/15.",
-    topic: "Time & Work"
-  },
-  {
-    id: 5,
-    question: "The average of 5 numbers is 27. If one number is excluded, the average becomes 25. What is the excluded number?",
-    options: ["30", "33", "35", "37"],
-    answer: "35",
-    explanation: "Total = 5 × 27 = 135. After exclusion = 4 × 25 = 100. Excluded = 135 - 100 = 35.",
-    topic: "Averages"
-  },
-  {
-    id: 6,
-    question: "What is 15% of 15% of 1500?",
-    options: ["22.5", "33.75", "45", "56.25"],
-    answer: "33.75",
-    explanation: "15% of 1500 = 225. 15% of 225 = 33.75.",
-    topic: "Percentages"
-  },
-  {
-    id: 7,
-    question: "In how many ways can 5 people be seated in a row?",
-    options: ["25", "60", "120", "720"],
-    answer: "120",
-    explanation: "5! = 5 × 4 × 3 × 2 × 1 = 120.",
-    topic: "Permutations"
-  },
-  {
-    id: 8,
-    question: "If log₂(x) = 5, what is x?",
-    options: ["10", "25", "32", "64"],
-    answer: "32",
-    explanation: "log₂(x) = 5 means 2⁵ = x = 32.",
-    topic: "Logarithms"
-  },
-  {
-    id: 9,
-    question: "A cistern can be filled by pipe A in 12 hours and emptied by pipe B in 15 hours. How long to fill if both are open?",
-    options: ["40 hrs", "50 hrs", "60 hrs", "72 hrs"],
-    answer: "60 hrs",
-    explanation: "Net fill rate = 1/12 - 1/15 = 1/60. Time = 60 hours.",
-    topic: "Pipes & Cisterns"
-  },
-  {
-    id: 10,
-    question: "The ratio of ages of A and B is 4:3. After 6 years, the ratio becomes 26:21. What is A's present age?",
-    options: ["32", "36", "40", "48"],
-    answer: "40",
-    explanation: "Let ages be 4x and 3x. (4x+6)/(3x+6) = 26/21. Solving: x = 10. A's age = 40.",
-    topic: "Ages"
-  },
-  {
-    id: 11,
-    question: "A boat can travel 20 km upstream in 4 hours and 20 km downstream in 2 hours. What is the speed of the current?",
-    options: ["2 km/hr", "2.5 km/hr", "3 km/hr", "3.5 km/hr"],
-    answer: "2.5 km/hr",
-    explanation: "Upstream speed = 5 km/hr. Downstream speed = 10 km/hr. Current = (10-5)/2 = 2.5 km/hr.",
-    topic: "Boats & Streams"
-  },
-  {
-    id: 12,
-    question: "What is the probability of getting at least one head when tossing 3 coins?",
-    options: ["1/8", "3/8", "5/8", "7/8"],
-    answer: "7/8",
-    explanation: "P(no head) = (1/2)³ = 1/8. P(at least one head) = 1 - 1/8 = 7/8.",
-    topic: "Probability"
-  },
-  {
-    id: 13,
-    question: "If a number is increased by 20% and then decreased by 20%, what is the net change?",
-    options: ["-4%", "-2%", "0%", "4%"],
-    answer: "-4%",
-    explanation: "Net change = -20×20/100 = -4%. This is the successive percentage change formula.",
-    topic: "Percentages"
-  },
-  {
-    id: 14,
-    question: "The simple interest on ₹5000 at 8% per annum for 3 years is:",
-    options: ["₹1000", "₹1100", "₹1200", "₹1300"],
-    answer: "₹1200",
-    explanation: "SI = PRT/100 = 5000 × 8 × 3 / 100 = ₹1200.",
-    topic: "Simple Interest"
-  },
-  {
-    id: 15,
-    question: "How many diagonals does a hexagon have?",
-    options: ["6", "7", "8", "9"],
-    answer: "9",
-    explanation: "Diagonals = n(n-3)/2 = 6(6-3)/2 = 9.",
-    topic: "Geometry"
-  },
-  {
-    id: 16,
-    question: "If x + 1/x = 5, what is x² + 1/x²?",
-    options: ["21", "23", "25", "27"],
-    answer: "23",
-    explanation: "(x + 1/x)² = x² + 2 + 1/x². So x² + 1/x² = 25 - 2 = 23.",
-    topic: "Algebra"
-  },
-  {
-    id: 17,
-    question: "A shopkeeper marks goods 30% above cost price and gives 10% discount. What is the profit%?",
-    options: ["15%", "17%", "20%", "22%"],
-    answer: "17%",
-    explanation: "Let CP = 100. MP = 130. SP = 130 × 0.9 = 117. Profit = 17%.",
-    topic: "Profit & Loss"
-  },
-  {
-    id: 18,
-    question: "The HCF of 36, 48, and 60 is:",
-    options: ["6", "8", "12", "24"],
-    answer: "12",
-    explanation: "36 = 2²×3², 48 = 2⁴×3, 60 = 2²×3×5. HCF = 2²×3 = 12.",
-    topic: "HCF & LCM"
-  },
-  {
-    id: 19,
-    question: "A clock shows 3:15. What is the angle between the hour and minute hands?",
-    options: ["0°", "7.5°", "15°", "22.5°"],
-    answer: "7.5°",
-    explanation: "At 3:15, minute hand at 90°. Hour hand at 90° + 15×0.5° = 97.5°. Angle = 7.5°.",
-    topic: "Clocks"
-  },
-  {
-    id: 20,
-    question: "In a class of 50 students, 30 play cricket, 25 play football, and 10 play both. How many play neither?",
-    options: ["3", "5", "7", "10"],
-    answer: "5",
-    explanation: "Students playing at least one = 30 + 25 - 10 = 45. Neither = 50 - 45 = 5.",
-    topic: "Sets"
-  }
+  { id: 2, question: "If the cost price of 12 items equals the selling price of 10 items, what is the profit percentage?", options: ["10%", "15%", "20%", "25%"], answer: "20%", explanation: "Let CP of each item = 1. Total CP = 12. SP of 10 items = 12. SP per item = 1.2. Profit = 20%.", topic: "Profit & Loss" },
+  { id: 3, question: "What is the next number in the series: 2, 6, 12, 20, 30, ?", options: ["40", "42", "44", "46"], answer: "42", explanation: "Differences: 4, 6, 8, 10, 12. Next number = 30 + 12 = 42.", topic: "Number Series" },
+  { id: 4, question: "A can do a work in 15 days and B in 20 days. If they work together for 4 days, what fraction of work is left?", options: ["7/15", "8/15", "1/3", "11/15"], answer: "8/15", explanation: "Combined work per day = 1/15 + 1/20 = 7/60. Work in 4 days = 28/60 = 7/15. Left = 1 - 7/15 = 8/15.", topic: "Time & Work" },
+  { id: 5, question: "The average of 5 numbers is 27. If one number is excluded, the average becomes 25. What is the excluded number?", options: ["30", "33", "35", "37"], answer: "35", explanation: "Total = 5 × 27 = 135. After exclusion = 4 × 25 = 100. Excluded = 135 - 100 = 35.", topic: "Averages" },
+  { id: 6, question: "What is 15% of 15% of 1500?", options: ["22.5", "33.75", "45", "56.25"], answer: "33.75", explanation: "15% of 1500 = 225. 15% of 225 = 33.75.", topic: "Percentages" },
+  { id: 7, question: "In how many ways can 5 people be seated in a row?", options: ["25", "60", "120", "720"], answer: "120", explanation: "5! = 5 × 4 × 3 × 2 × 1 = 120.", topic: "Permutations" },
+  { id: 8, question: "If log₂(x) = 5, what is x?", options: ["10", "25", "32", "64"], answer: "32", explanation: "log₂(x) = 5 means 2⁵ = x = 32.", topic: "Logarithms" },
+  { id: 9, question: "A cistern can be filled by pipe A in 12 hours and emptied by pipe B in 15 hours. How long to fill if both are open?", options: ["40 hrs", "50 hrs", "60 hrs", "72 hrs"], answer: "60 hrs", explanation: "Net fill rate = 1/12 - 1/15 = 1/60. Time = 60 hours.", topic: "Pipes & Cisterns" },
+  { id: 10, question: "The ratio of ages of A and B is 4:3. After 6 years, the ratio becomes 26:21. What is A's present age?", options: ["32", "36", "40", "48"], answer: "40", explanation: "Let ages be 4x and 3x. (4x+6)/(3x+6) = 26/21. Solving: x = 10. A's age = 40.", topic: "Ages" },
+  { id: 11, question: "A boat can travel 20 km upstream in 4 hours and 20 km downstream in 2 hours. What is the speed of the current?", options: ["2 km/hr", "2.5 km/hr", "3 km/hr", "3.5 km/hr"], answer: "2.5 km/hr", explanation: "Upstream speed = 5 km/hr. Downstream speed = 10 km/hr. Current = (10-5)/2 = 2.5 km/hr.", topic: "Boats & Streams" },
+  { id: 12, question: "What is the probability of getting at least one head when tossing 3 coins?", options: ["1/8", "3/8", "5/8", "7/8"], answer: "7/8", explanation: "P(no head) = (1/2)³ = 1/8. P(at least one head) = 1 - 1/8 = 7/8.", topic: "Probability" },
+  { id: 13, question: "If a number is increased by 20% and then decreased by 20%, what is the net change?", options: ["-4%", "-2%", "0%", "4%"], answer: "-4%", explanation: "Net change = -20×20/100 = -4%. This is the successive percentage change formula.", topic: "Percentages" },
+  { id: 14, question: "The simple interest on ₹5000 at 8% per annum for 3 years is:", options: ["₹1000", "₹1100", "₹1200", "₹1300"], answer: "₹1200", explanation: "SI = PRT/100 = 5000 × 8 × 3 / 100 = ₹1200.", topic: "Simple Interest" },
+  { id: 15, question: "How many diagonals does a hexagon have?", options: ["6", "7", "8", "9"], answer: "9", explanation: "Diagonals = n(n-3)/2 = 6(6-3)/2 = 9.", topic: "Geometry" },
+  { id: 16, question: "If x + 1/x = 5, what is x² + 1/x²?", options: ["21", "23", "25", "27"], answer: "23", explanation: "(x + 1/x)² = x² + 2 + 1/x². So x² + 1/x² = 25 - 2 = 23.", topic: "Algebra" },
+  { id: 17, question: "A shopkeeper marks goods 30% above cost price and gives 10% discount. What is the profit%?", options: ["15%", "17%", "20%", "22%"], answer: "17%", explanation: "Let CP = 100. MP = 130. SP = 130 × 0.9 = 117. Profit = 17%.", topic: "Profit & Loss" },
+  { id: 18, question: "The HCF of 36, 48, and 60 is:", options: ["6", "8", "12", "24"], answer: "12", explanation: "36 = 2²×3², 48 = 2⁴×3, 60 = 2²×3×5. HCF = 2²×3 = 12.", topic: "HCF & LCM" },
+  { id: 19, question: "A clock shows 3:15. What is the angle between the hour and minute hands?", options: ["0°", "7.5°", "15°", "22.5°"], answer: "7.5°", explanation: "At 3:15, minute hand at 90°. Hour hand at 90° + 15×0.5° = 97.5°. Angle = 7.5°.", topic: "Clocks" },
+  { id: 20, question: "In a class of 50 students, 30 play cricket, 25 play football, and 10 play both. How many play neither?", options: ["3", "5", "7", "10"], answer: "5", explanation: "Students playing at least one = 30 + 25 - 10 = 45. Neither = 50 - 45 = 5.", topic: "Sets" }
 ];
 
 export const technicalQuestions: Question[] = [
-  {
-    id: 1,
-    question: "What is the time complexity of binary search?",
-    options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
-    answer: "O(log n)",
-    explanation: "Binary search halves the search space each step, giving logarithmic time complexity.",
-    topic: "Algorithms"
-  },
-  {
-    id: 2,
-    question: "Which data structure uses LIFO ordering?",
-    options: ["Queue", "Stack", "Linked List", "Tree"],
-    answer: "Stack",
-    explanation: "Stack follows Last In First Out (LIFO) principle.",
-    topic: "Data Structures"
-  },
-  {
-    id: 3,
-    question: "What does SQL stand for?",
-    options: ["Strong Query Language", "Structured Query Language", "Simple Query Logic", "Standard Query Language"],
-    answer: "Structured Query Language",
-    explanation: "SQL stands for Structured Query Language, used for managing relational databases.",
-    topic: "Databases"
-  },
-  {
-    id: 4,
-    question: "Which HTTP method is idempotent?",
-    options: ["POST", "PATCH", "PUT", "None of these"],
-    answer: "PUT",
-    explanation: "PUT is idempotent — making the same request multiple times produces the same result.",
-    topic: "Web Development"
-  },
-  {
-    id: 5,
-    question: "What is polymorphism in OOP?",
-    options: ["Multiple inheritance", "Same interface, different implementations", "Data hiding", "Code reuse"],
-    answer: "Same interface, different implementations",
-    explanation: "Polymorphism allows objects of different classes to be treated through the same interface.",
-    topic: "OOP Concepts"
-  },
-  {
-    id: 6,
-    question: "Which sorting algorithm has the best average-case time complexity?",
-    options: ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort"],
-    answer: "Merge Sort",
-    explanation: "Merge Sort has O(n log n) average and worst case, better than O(n²) of others listed.",
-    topic: "Algorithms"
-  },
-  {
-    id: 7,
-    question: "What is a deadlock?",
-    options: ["A process that runs forever", "Two processes waiting for each other indefinitely", "Memory overflow", "Stack overflow"],
-    answer: "Two processes waiting for each other indefinitely",
-    explanation: "Deadlock occurs when two or more processes are blocked, each waiting for the other to release resources.",
-    topic: "Operating Systems"
-  },
-  {
-    id: 8,
-    question: "What is the purpose of an index in a database?",
-    options: ["Store data", "Speed up queries", "Enforce constraints", "Backup data"],
-    answer: "Speed up queries",
-    explanation: "Indexes create a data structure that allows the database to find rows faster without scanning the full table.",
-    topic: "Databases"
-  },
-  {
-    id: 9,
-    question: "In JavaScript, what does 'typeof null' return?",
-    options: ["'null'", "'undefined'", "'object'", "'boolean'"],
-    answer: "'object'",
-    explanation: "This is a well-known JavaScript bug. typeof null returns 'object' due to how JS was originally implemented.",
-    topic: "JavaScript"
-  },
-  {
-    id: 10,
-    question: "What is the difference between TCP and UDP?",
-    options: ["TCP is faster", "UDP guarantees delivery", "TCP is connection-oriented, UDP is connectionless", "No difference"],
-    answer: "TCP is connection-oriented, UDP is connectionless",
-    explanation: "TCP establishes a connection and guarantees delivery. UDP sends data without connection setup for speed.",
-    topic: "Networking"
-  },
+  { id: 1, question: "What is the time complexity of binary search?", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], answer: "O(log n)", explanation: "Binary search halves the search space each step, giving logarithmic time complexity.", topic: "Algorithms" },
+  { id: 2, question: "Which data structure uses LIFO ordering?", options: ["Queue", "Stack", "Linked List", "Tree"], answer: "Stack", explanation: "Stack follows Last In First Out (LIFO) principle.", topic: "Data Structures" },
+  { id: 3, question: "What does SQL stand for?", options: ["Strong Query Language", "Structured Query Language", "Simple Query Logic", "Standard Query Language"], answer: "Structured Query Language", explanation: "SQL stands for Structured Query Language, used for managing relational databases.", topic: "Databases" },
+  { id: 4, question: "Which HTTP method is idempotent?", options: ["POST", "PATCH", "PUT", "None of these"], answer: "PUT", explanation: "PUT is idempotent — making the same request multiple times produces the same result.", topic: "Web Development" },
+  { id: 5, question: "What is polymorphism in OOP?", options: ["Multiple inheritance", "Same interface, different implementations", "Data hiding", "Code reuse"], answer: "Same interface, different implementations", explanation: "Polymorphism allows objects of different classes to be treated through the same interface.", topic: "OOP Concepts" },
+  { id: 6, question: "Which sorting algorithm has the best average-case time complexity?", options: ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort"], answer: "Merge Sort", explanation: "Merge Sort has O(n log n) average and worst case, better than O(n²) of others listed.", topic: "Algorithms" },
+  { id: 7, question: "What is a deadlock?", options: ["A process that runs forever", "Two processes waiting for each other indefinitely", "Memory overflow", "Stack overflow"], answer: "Two processes waiting for each other indefinitely", explanation: "Deadlock occurs when two or more processes are blocked, each waiting for the other to release resources.", topic: "Operating Systems" },
+  { id: 8, question: "What is the purpose of an index in a database?", options: ["Store data", "Speed up queries", "Enforce constraints", "Backup data"], answer: "Speed up queries", explanation: "Indexes create a data structure that allows the database to find rows faster without scanning the full table.", topic: "Databases" },
+  { id: 9, question: "In JavaScript, what does 'typeof null' return?", options: ["'null'", "'undefined'", "'object'", "'boolean'"], answer: "'object'", explanation: "This is a well-known JavaScript bug. typeof null returns 'object' due to how JS was originally implemented.", topic: "JavaScript" },
+  { id: 10, question: "What is the difference between TCP and UDP?", options: ["TCP is faster", "UDP guarantees delivery", "TCP is connection-oriented, UDP is connectionless", "No difference"], answer: "TCP is connection-oriented, UDP is connectionless", explanation: "TCP establishes a connection and guarantees delivery. UDP sends data without connection setup for speed.", topic: "Networking" },
   { id: 11, question: "What is a closure in JavaScript?", options: ["A function with no parameters", "A function that remembers its lexical scope", "A class method", "An async function"], answer: "A function that remembers its lexical scope", explanation: "A closure is a function that has access to variables from its outer (enclosing) function scope even after the outer function has returned.", topic: "JavaScript" },
   { id: 12, question: "What does ACID stand for in databases?", options: ["Atomicity, Consistency, Isolation, Durability", "Access, Control, Integration, Data", "Automated, Centralized, Indexed, Distributed", "None of these"], answer: "Atomicity, Consistency, Isolation, Durability", explanation: "ACID properties ensure reliable database transactions.", topic: "Databases" },
   { id: 13, question: "What is the space complexity of a recursive Fibonacci function?", options: ["O(1)", "O(n)", "O(n²)", "O(2ⁿ)"], answer: "O(n)", explanation: "The maximum depth of the recursion stack is n, so space complexity is O(n).", topic: "Algorithms" },
@@ -286,12 +83,13 @@ export const hrQuestions: Question[] = [
   { id: 20, question: "Best way to follow up after an interview:", options: ["Don't follow up", "Send a thank-you email within 24 hours", "Call repeatedly", "Connect on social media immediately"], answer: "Send a thank-you email within 24 hours", explanation: "A timely, personalized thank-you email reinforces your interest and leaves a positive impression.", topic: "Interview Etiquette" }
 ];
 
-export type RoundType = 'aptitude' | 'technical' | 'hr';
+export type RoundType = 'aptitude' | 'technical' | 'hr' | 'coding' | 'hr_interview';
 
 export function getQuestions(round: RoundType): Question[] {
   switch (round) {
     case 'aptitude': return aptitudeQuestions;
     case 'technical': return technicalQuestions;
     case 'hr': return hrQuestions;
+    default: return [];
   }
 }
