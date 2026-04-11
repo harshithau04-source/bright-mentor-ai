@@ -8,6 +8,8 @@ import { TestProvider } from "@/context/TestContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AptitudeTest from "./pages/AptitudeTest";
+import CodingTest from "./pages/CodingTest";
+import HRInterview from "./pages/HRInterview";
 import TestResults from "./pages/TestResults";
 import Solutions from "./pages/Solutions";
 import NotFound from "./pages/NotFound";
@@ -41,6 +43,8 @@ const AppRoutes = () => (
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/test/:round/:level" element={<ProtectedRoute><AptitudeTest /></ProtectedRoute>} />
+        <Route path="/coding" element={<ProtectedRoute><CodingTest /></ProtectedRoute>} />
+        <Route path="/hr-interview" element={<ProtectedRoute><HRInterview /></ProtectedRoute>} />
         <Route path="/results" element={<ProtectedRoute><TestResults /></ProtectedRoute>} />
         <Route path="/solutions" element={<ProtectedRoute><Solutions /></ProtectedRoute>} />
         <Route path="*" element={<NotFound />} />
