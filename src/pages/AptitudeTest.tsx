@@ -53,6 +53,7 @@ export default function AptitudeTest() {
 
   return (
     <div className="min-h-screen bg-background">
+      <WebcamProctor />
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-20">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div>
