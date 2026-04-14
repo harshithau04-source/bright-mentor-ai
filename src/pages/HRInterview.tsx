@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Send, MessageSquare, Video, Lightbulb } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Send, MessageSquare, Video, Lightbulb, Sparkles, Loader2 } from 'lucide-react';
 import WebcamProctor from '@/components/WebcamProctor';
 import VideoRecorder from '@/components/VideoRecorder';
 import { hrInterviewQuestions } from '@/data/hrInterviewQuestions';
 import { useTest } from '@/context/TestContext';
+import { useAIEvaluation, HREvaluation } from '@/hooks/useAIEvaluation';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
@@ -29,6 +30,8 @@ export default function HRInterview() {
   const [textInput, setTextInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [showTips, setShowTips] = useState(false);
+  const [hrEvaluations, setHrEvaluations] = useState<Record<number, HREvaluation>>({});
+  const { evaluateHR, loading: aiLoading } = useAIEvaluation();
 
   const questions = hrInterviewQuestions;
   const q = questions[current];
@@ -224,6 +227,67 @@ export default function HRInterview() {
                 onRecordingComplete={handleVideoComplete}
                 maxDuration={q.maxDuration}
               />
+            )}
+
+            {/* AI Evaluate Button */}
+            {mode === 'text' && textInput.trim() && (
+              <div className="mt-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={async () => {
+                    const result = await evaluateHR(q.question, textInput, q.category);
+                    if (result) setHrEvaluations(prev => ({ ...prev, [current]: result }));
+                  }}
+                  disabled={aiLoading}
+                  className="gap-2"
+                >
+                  {aiLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+                  AI Evaluate Response
+                </Button>
+              </div>
+            )}
+
+            {/* AI Feedback */}
+            {hrEvaluations[current] && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-4"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                  <span className="font-display text-sm font-bold text-foreground">
+                    AI Score: {hrEvaluations[current].score}/10
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">{hrEvaluations[current].feedback}</p>
+                {hrEvaluations[current].strengths.length > 0 && (
+                  <div className="mb-2">
+                    <p className="text-xs font-display text-success mb-1">Strengths:</p>
+                    <ul className="space-y-1">
+                      {hrEvaluations[current].strengths.map((s, i) => (
+                        <li key={i} className="text-xs text-muted-foreground flex gap-1">
+                          <span className="text-success">✓</span> {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {hrEvaluations[current].improvements.length > 0 && (
+                  <div>
+                    <p className="text-xs font-display text-warning mb-1">Improvements:</p>
+                    <ul className="space-y-1">
+                      {hrEvaluations[current].improvements.map((s, i) => (
+                        <li key={i} className="text-xs text-muted-foreground flex gap-1">
+                          <span className="text-warning">→</span> {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </motion.div>
+            )}
             )}
           </motion.div>
         </AnimatePresence>
