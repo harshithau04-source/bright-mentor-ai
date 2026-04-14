@@ -288,7 +288,6 @@ export default function HRInterview() {
                 )}
               </motion.div>
             )}
-            )}
           </motion.div>
         </AnimatePresence>
 
