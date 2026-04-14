@@ -1,12 +1,13 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Send, Code2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Send, Code2, Sparkles, Loader2 } from 'lucide-react';
 import Editor from '@monaco-editor/react';
 import Timer from '@/components/Timer';
 import WebcamProctor from '@/components/WebcamProctor';
 import { dsaQuestions, sqlQuestions, codingLanguages, CodingLanguage, CodingQuestion } from '@/data/codingQuestions';
 import { useTest } from '@/context/TestContext';
+import { useAIEvaluation, CodingEvaluation } from '@/hooks/useAIEvaluation';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
@@ -28,6 +29,8 @@ export default function CodingTest() {
   const [current, setCurrent] = useState(0);
   const [codes, setCodes] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [evaluations, setEvaluations] = useState<Record<number, CodingEvaluation>>({});
+  const { evaluateCoding, loading: aiLoading } = useAIEvaluation();
 
   // Category & language selection screen
   if (!category || !language) {
@@ -260,12 +263,58 @@ export default function CodingTest() {
               </Button>
             </div>
 
-            {current === 4 || Object.keys(codes).length === 5 ? (
-              <Button size="sm" onClick={handleSubmit} className="gap-1 bg-success hover:bg-success/90 text-success-foreground">
-                Submit All <Send className="w-3 h-3" />
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={async () => {
+                  const code = codes[current];
+                  if (!code?.trim()) return;
+                  const result = await evaluateCoding(q.title + '\n' + q.description, code, language, category);
+                  if (result) setEvaluations(prev => ({ ...prev, [current]: result }));
+                }}
+                disabled={aiLoading || !codes[current]?.trim()}
+                className="gap-1"
+              >
+                {aiLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <Sparkles className="w-3 h-3" />}
+                AI Evaluate
               </Button>
-            ) : null}
+
+              {(current === 4 || Object.keys(codes).length === 5) && (
+                <Button size="sm" onClick={handleSubmit} className="gap-1 bg-success hover:bg-success/90 text-success-foreground">
+                  Submit All <Send className="w-3 h-3" />
+                </Button>
+              )}
+            </div>
           </div>
+
+          {/* AI Feedback Panel */}
+          {evaluations[current] && (
+            <div className="border-t border-border/50 p-4 bg-card/80 max-h-48 overflow-y-auto">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="font-display text-sm font-bold text-foreground">
+                  AI Score: {evaluations[current].score}/10
+                </span>
+                <span className={`text-xs px-2 py-0.5 rounded ${evaluations[current].correctness ? 'bg-success/20 text-success' : 'bg-destructive/20 text-destructive'}`}>
+                  {evaluations[current].correctness ? 'Correct' : 'Needs Work'}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground mb-2">{evaluations[current].feedback}</p>
+              {evaluations[current].suggestions.length > 0 && (
+                <div>
+                  <p className="text-xs font-display text-muted-foreground mb-1">Suggestions:</p>
+                  <ul className="space-y-1">
+                    {evaluations[current].suggestions.map((s, i) => (
+                      <li key={i} className="text-xs text-muted-foreground flex gap-1">
+                        <span className="text-primary">•</span> {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
