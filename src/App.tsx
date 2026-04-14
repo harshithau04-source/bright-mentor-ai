@@ -12,6 +12,8 @@ import CodingTest from "./pages/CodingTest";
 import HRInterview from "./pages/HRInterview";
 import TestResults from "./pages/TestResults";
 import Solutions from "./pages/Solutions";
+import ProfileSettings from "./pages/ProfileSettings";
+import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +49,8 @@ const AppRoutes = () => (
         <Route path="/hr-interview" element={<ProtectedRoute><HRInterview /></ProtectedRoute>} />
         <Route path="/results" element={<ProtectedRoute><TestResults /></ProtectedRoute>} />
         <Route path="/solutions" element={<ProtectedRoute><Solutions /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><ProfileSettings /></ProtectedRoute>} />
+        <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
