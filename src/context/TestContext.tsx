@@ -64,13 +64,8 @@ export function TestProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const isRoundUnlocked = (round: RoundType, level: number): boolean => {
-    if (level === 1) {
-      if (round === 'aptitude') return true;
-      if (round === 'technical') return progress.completedRounds.includes('aptitude_1');
-      if (round === 'hr') return progress.completedRounds.includes('technical_1');
-    }
-    return progress.completedRounds.includes(`${round}_${level - 1}`);
+  const isRoundUnlocked = (_round: RoundType, _level: number): boolean => {
+    return true;
   };
 
   return (

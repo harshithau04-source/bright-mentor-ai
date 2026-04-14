@@ -21,14 +21,7 @@ export default function Dashboard() {
     { key: 'hr_interview', label: 'HR Interview', icon: Video, color: 'accent', desc: 'Tell about yourself & skills — text or video', path: '/hr-interview', qCount: '5 Questions • Video/Text' },
   ];
 
-  const isUnlocked = (key: string) => {
-    if (key === 'aptitude') return true;
-    if (key === 'technical') return progress.completedRounds.includes('aptitude_1');
-    if (key === 'coding') return progress.completedRounds.includes('technical_1');
-    if (key === 'hr') return progress.completedRounds.includes('coding_1') || progress.completedRounds.includes('technical_1');
-    if (key === 'hr_interview') return progress.completedRounds.includes('hr_1');
-    return false;
-  };
+  const isUnlocked = (_key: string) => true;
 
   const isCompleted = (key: string) => {
     return progress.completedRounds.includes(`${key}_1`);
