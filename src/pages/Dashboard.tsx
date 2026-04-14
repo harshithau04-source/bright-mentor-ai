@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Trophy, Target, Zap, LogOut, User, Brain, Code, Users, Code2, Video } from 'lucide-react';
+import { Trophy, Target, Zap, LogOut, User, Brain, Code, Users, Code2, Video, Settings, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import RoundCard from '@/components/RoundCard';
 import { useTest } from '@/context/TestContext';
@@ -48,10 +48,12 @@ export default function Dashboard() {
           </motion.div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border/50">
-              <User className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm text-foreground">{profile?.display_name}</span>
-            </div>
+            <Button variant="outline" size="sm" onClick={() => navigate('/leaderboard')} className="gap-2">
+              <Award className="w-4 h-4" /> Leaderboard
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => navigate('/profile')} className="gap-2">
+              <Settings className="w-4 h-4" /> Profile
+            </Button>
             <Button variant="outline" size="sm" onClick={signOut} className="gap-2">
               <LogOut className="w-4 h-4" /> Sign Out
             </Button>
